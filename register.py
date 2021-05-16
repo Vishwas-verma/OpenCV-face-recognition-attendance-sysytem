@@ -1,4 +1,4 @@
-import face_recognition.api as face_recognition
+import face_recognition as face_recognition
 import cv2, os, time, pickle
 import numpy as np
 # from mtcnn import MTCNN
@@ -12,8 +12,8 @@ def register_yourself(student_id):
 
     mpl.rcParams['toolbar'] = 'None'
     # PATH = "/home/harsh/Backup/face-recognition/data"
-    PATH = "/home/harsh/face-recognition-attendance-system/static/data"
-    STORAGE_PATH = "/home/harsh/face-recognition-attendance-system/storage"
+    PATH = "/Documents/College final year/face-recognition-attendance-system/static/data"
+    STORAGE_PATH = "/Documents/College final year/face-recognition-attendance-system/storage"
 
     try:
         os.makedirs(PATH)
@@ -38,7 +38,6 @@ def register_yourself(student_id):
         id_idx = {}
 
 
-    video_capture = cv2.VideoCapture(0)
     # student_id = input("Enter your id: ")
 
     IMAGE_PATH = os.path.join(PATH, student_id)
@@ -59,14 +58,15 @@ def register_yourself(student_id):
     i = 0
     j = start
 
+    video_capture = cv2.VideoCapture(0)
     check, image = video_capture.read()
+    print(image,"hi")
 
     # print("BEFORE SHOWING")
     plot = plt.subplot(1,1,1)
     plt.axis('off')
     plt.title("Registering face, wait for a bit")
-    im1 = plot.imshow(cv2.cvtColor(image,cv2.COLOR_BGR2RGB))
-# print("WORKS reg")
+    im1 = plt.imshow(cv2.cvtColor(image,cv2.COLOR_BGR2RGB))
 
     while j < start + 10:   # Take 10 more images
 
